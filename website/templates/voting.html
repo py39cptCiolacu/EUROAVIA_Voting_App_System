@@ -1,0 +1,147 @@
+{% extends "base.html" %} {% block title %} Voting {% endblock %} {% block content%}
+
+<div class="container">
+    <div class="card">
+      <div class="card-header"> Motion
+      </div>
+      <div class="card-body">
+        <p>
+            {{motion.motion}}
+        </p>
+        <div class="user">
+          <div class="user-info">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>    
+
+  <div class = 'buttons'>
+
+    <form method = "POST">
+        <button class ="bn3637 bn36" name ='button' value ='yes' onclick="return confirm('Are you sure you want to vote IN FAVOUR?');"> In favour</button>
+    </form> 
+
+    <form method = "POST">
+        <button class ="bn3637 bn36" name ='button' value ='no' onclick="return confirm('Are you sure you want to vote NOT IN FAVOUR?');"> Not in favour</button>
+    </form> 
+
+    <form method = "POST">
+        <button class ="bn3637 bn36" name ='button' value ='abstention' onclick="return confirm('Are you sure you want to vote ABSTENTION?');"> Abstention</button>
+  </div>
+
+
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+    * {
+      box-sizing: border-box;
+    }
+    .container {
+      display: flex;
+      width: 370px;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      padding-top: 70px;
+	  padding-bottom: 20px;
+    }
+    .card {
+      margin:0%; 
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      width: 350px;
+      padding-top: 10px;
+    }
+    .card-header {
+      height: 50px;  
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      min-height: 250px;
+      padding-bottom: 30px;
+    }
+    
+    .tag {
+      background: #cccccc;
+      border-radius: 50px;
+      font-size: 20px;
+      margin: 0;
+      color: #fff;
+      padding: 2px 10px;
+      /* text-transform: uppercase; */
+      cursor: pointer;
+    }
+    .tag-teal {
+      background-color: #47bcd4;
+    }
+    .tag-purple {
+      background-color: blue;
+    }
+    .tag-pink {
+      background-color: #cd5b9f;
+    }
+    
+    .card-body p {
+      font-size: 13px;
+      margin: 0 0 40px;
+    }
+    .user {
+      display: flex;
+      margin-top: auto;
+    }
+    
+    .user img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    .user-info h5 {
+      margin: 0;
+    }
+    .user-info small {
+      color: blue;
+    }
+    
+    .bn3637 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2rem 1rem;
+      font-family: "Roboto", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      backface-visibility: hidden;
+      border: 0.3rem solid transparent;
+      border-radius: 3rem;
+    }
+
+	.buttons{
+		align-items:center;
+	}
+
+    .bn36 {
+     background-color: black ;
+    }
+    
+    .bn36 {
+      transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+    }
+    
+    .bn36:hover {
+      transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+    }
+    
+    </style>
+
+
+
+    {% endblock %}
