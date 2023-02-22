@@ -1,0 +1,24 @@
+{% extends "admin_base.html" %} {% block title %} Admin Status {% endblock %} {% block content%}
+
+<div class='container'>
+<h1> Set Status  </h1>
+    <form method="POST">
+    <input
+          type="text"
+          class="form-control"
+          id="status"
+          name="status"
+          placeholder="Status"
+        />
+        <br>
+        <button type="submit" class="btn btn-primary">Set Status</button>
+    </form>
+</div>
+    
+<style>
+	.container{
+		padding-top: 40px;
+	}
+</style>  
+
+{% endblock %}

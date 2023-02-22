@@ -24,7 +24,7 @@ def create_app():
 	from .models import Admin
 
 	login_manager = LoginManager()
-	login_manager.login_view = 'auth.admin_log_in'
+	login_manager.login_view = 'views.admin_log_in'
 	login_manager.init_app(app)
 
 	@login_manager.user_loader

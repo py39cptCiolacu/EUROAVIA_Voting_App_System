@@ -1,0 +1,54 @@
+{% extends "admin_base.html" %} {% block title %}Admin Sign Up{% endblock %} {% block content%}
+
+
+    <form method="POST">
+      <h3 align="center">Login</h3>
+	  <br>
+	  <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Enter Username"
+        />
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+        />
+      </div>
+      <br>
+	  <div class="form-group">
+        <label for="re-password">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="re-password"
+          name="re-password"
+          placeholder="Confirm password"
+        />
+      </div>
+      <br>
+	  <div class="form-group">
+        <label for="code">Unique Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="code"
+          name="code"
+          placeholder="Enter Code"
+        />
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "admin_base.html" %} {% block title %} Admin Motion {% endblock %} {% block content%}
+
+<div class = "container">
+<h1> Reset </h1>
+<form method="POST">
+    <input
+          type="text"
+          class="form-control"
+          id="reset"
+          name="reset"
+          placeholder="Reset"
+        />
+        <br>
+        <button type="submit" class="btn btn-primary">Reset</button>
+    </form>
+</div>
+
+<style>
+	.container{
+	padding-top: 40px;
+	}
+</style>
+
+{%endblock%}

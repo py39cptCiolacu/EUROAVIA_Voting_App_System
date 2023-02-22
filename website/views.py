@@ -78,7 +78,7 @@ def admin_sign_up():
             flash('---------------Username already exists.', category='error')
         elif password != re_password:
             flash('---------------Passwords does not coincide', category='error')
-        elif code != 'AMEAC2022':
+        elif code != 'EMEAC2023':
             flash('---------------Incorect unique code')
         else:
             new_admin = Admin(username=username, password=password)
@@ -86,7 +86,7 @@ def admin_sign_up():
             db.session.commit()
             login_user(new_admin, remember=True)
             flash('---------------Account created!', category='success')
-            return redirect(url_for('auth.admin'))
+            return redirect(url_for('views.admin'))
 
     return render_template("admin_sign_up.html", user=current_user)
 
@@ -103,7 +103,7 @@ def admin_log_in():
             if password == admin.password:
                 #flash('Logged in successfully!', category='success')
                 login_user(admin, remember=True)
-                return redirect(url_for('auth.admin'))
+                return redirect(url_for('views.admin'))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
@@ -116,7 +116,7 @@ def admin_log_in():
 @login_required
 def admin_log_out():
     logout_user()
-    return redirect(url_for('auth.admin'))
+    return redirect(url_for('views.admin'))
     
 
 @views.route('/admin', methods=['GET', 'POST'])
@@ -157,7 +157,7 @@ def admin_agenda():
         db.session.add(agenda)
         db.session.commit()
         flash("Agenda set!")
-        return redirect(url_for('auth.admin'))
+        return redirect(url_for('views.admin'))
 
     return render_template("admin_agenda.html")
 
@@ -172,7 +172,7 @@ def admin_status():
         db.session.add(status)
         db.session.commit()
         flash("Status updated!")
-        return redirect(url_for('auth.admin'))
+        return redirect(url_for('views.admin'))
 
     return render_template("admin_status.html")
 
@@ -187,7 +187,7 @@ def admin_motion():
         db.session.add(motion)
         db.session.commit()
         flash("Motion set!")
-        return redirect(url_for('auth.admin'))
+        return redirect(url_for('views.admin'))
 
     return render_template("admin_motion.html")
 
@@ -204,7 +204,7 @@ def admin_reset():
             motion = Motion(motion='no motion right now!')
             db.session.add(motion)
             db.session.commit()
-            return redirect(url_for('auth.admin'))
+            return redirect(url_for('views.admin'))
 
     return render_template("admin_reset.html")
 
@@ -222,7 +222,7 @@ def admin_passwords():
             for p in passwords:
                 db.session.add(Password(password=p))
                 db.session.commit()
-            return redirect(url_for('auth.admin'))
+            return redirect(url_for('views.admin'))
 
     return render_template("admin_passwords.html")
 

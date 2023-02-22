@@ -1,0 +1,28 @@
+{% extends "admin_base.html" %} {% block title %} Admin{% endblock %} {% block content%}
+
+<h1> <center> Admin Page </center> </h1> <br>
+
+<div class='container'> 
+<h2> Status : {{status.status}} </h2>
+</div>
+
+<div class='container'> 
+<h2> Motion : {{motion.motion}} </h2>
+</div>
+
+<div class='container'> 
+<h2> Total votes : {{nr_votes}} <br>
+	 Yes : {{yes}} <br>
+	 No : {{no}} <br>
+	 Abstention : {{absention}} </h2>
+
+<style>
+	.container{
+		top: 15px;
+		padding-top: 20px;
+	}
+	
+</style>
+	
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "admin_base.html" %} {% block title %} Admin Motion {% endblock %} {% block content%}
+
+<div class = "container">
+<h1> Set Motion </h1>
+<form method="POST">
+    <input
+          type="text"
+          class="form-control"
+          id="motion"
+          name="motion"
+          placeholder="Motion"
+        />
+        <br>
+        <button type="submit" class="btn btn-primary">Set Motion</button>
+    </form>
+</div>
+
+<style>
+	.container{
+	padding-top: 40px;
+	}
+    #motion
+{
+    height:200px;
+    font-size:14pt;
+}
+
+</style>
+
+{%endblock%}

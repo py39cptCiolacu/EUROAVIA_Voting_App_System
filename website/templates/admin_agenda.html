@@ -1,0 +1,24 @@
+{% extends "admin_base.html" %} {% block title %} Admin Agenda {% endblock %} {% block content%}
+
+<div class = "container">
+<h1> Set Agenda </h1>
+<form method="POST">
+    <input
+          type="text"
+          class="form-control"
+          id="agenda"
+          name="agenda"
+          placeholder="Agenda"
+        />
+        <br>
+        <button type="submit" class="btn btn-primary">Set Agenda</button>
+    </form>
+</div>
+
+<style>
+	.container{
+	padding-top: 40px;
+	}
+</style>
+
+{%endblock%}
