@@ -4,13 +4,22 @@
 <h1> Set Status  </h1>
     <form method="POST">
     <input
-          type="text"
+          type="radio"
           class="form-control"
-          id="status"
+          id="start"
           name="status"
-          placeholder="Status"
+          value = "START"
         />
-        <br>
+        <label for="start">START</label>
+    <input
+          type="radio"
+          class="form-control"
+          id="stop"
+          name="status"
+          value = "STOP"
+        />
+        <label for="stop">STOP</label> 
+    </br>
         <button type="submit" class="btn btn-primary">Set Status</button>
     </form>
 </div>
