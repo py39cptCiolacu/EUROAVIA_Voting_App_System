@@ -3,6 +3,8 @@
 <div class='container'>
 <h1> Set Status  </h1>
     <form method="POST">
+    <label for="start">
+        START
     <input
           type="radio"
           class="form-control"
@@ -10,7 +12,9 @@
           name="status"
           value = "START"
         />
-        <label for="start">START</label>
+    </label>
+    <label for="stop">
+        STOP- 
     <input
           type="radio"
           class="form-control"
@@ -18,7 +22,7 @@
           name="status"
           value = "STOP"
         />
-        <label for="stop">STOP</label> 
+    </label> 
     </br>
         <button type="submit" class="btn btn-primary">Set Status</button>
     </form>
@@ -28,6 +32,14 @@
 	.container{
 		padding-top: 40px;
 	}
+
+  label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 35px;
+  }
+
 </style>  
 
 {% endblock %}

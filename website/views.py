@@ -37,9 +37,20 @@ def voting():
             vote = Votes(vote=vote_value, password=password)
             db.session.add(vote)
             db.session.commit()
-            return redirect(url_for('views.congrats')) 
+            return redirect(url_for('views.extra_check')) 
 
     return render_template("voting.html", motion=motion)
+
+@views.route('/extra_check', methods = ['GET', 'POST'])
+def extra_check():
+        
+        password = session['parola']
+        check = Votes.query.filter_by(password=password).first()
+        if check:
+            return redirect(url_for('views.congrats'))
+        else:
+            session['error_voting'] = 'Unexpected Error. Please Vote Again'
+            return redirect(url_for('views.error'))
 
 
 @views.route('/agenda', methods=['GET', 'POST'])
@@ -105,9 +116,9 @@ def admin_log_in():
                 login_user(admin, remember=True)
                 return redirect(url_for('views.admin'))
             else:
-                flash('Incorrect password, try again.', category='error')
+                flash('----------------Incorrect password, try again.', category='error')
         else:
-            flash('Email does not exist.', category='error')
+            flash('----------------Email does not exist.', category='error')
 
     return render_template("admin_log_in.html")
 
@@ -138,13 +149,20 @@ def admin():
 
     motion = Motion.query.order_by(Motion.id.desc()).first()
 
+    passwords = Password.query.all()
+    if passwords:
+        get_passwords = 'YES'
+    else:
+        get_passwords = 'NO'
+
     return render_template("admin.html",
                            status=status,
                            motion=motion,
                            nr_votes=nr_votes,
                            yes=yes,
                            no=no,
-                           absention=abstention)
+                           absention=abstention,
+                           get_passwords = get_passwords)
 
 
 @views.route('/admin_agenda', methods=['GET', 'POST'])
@@ -171,7 +189,7 @@ def admin_status():
         status = Status(status=status_text)
         db.session.add(status)
         db.session.commit()
-        flash("Status updated!")
+        flash("----------------Status updated!")
         return redirect(url_for('views.admin'))
 
     return render_template("admin_status.html")
@@ -186,7 +204,7 @@ def admin_motion():
         motion = Motion(motion=motion_text)
         db.session.add(motion)
         db.session.commit()
-        flash("Motion set!")
+        flash("----------------Motion set!")
         return redirect(url_for('views.admin'))
 
     return render_template("admin_motion.html")
@@ -213,7 +231,7 @@ def admin_reset():
 @login_required
 def admin_passwords():
 
-    text = '/home/napoli2022/app/codes2.xls'
+    text = 'instance\codes.xls'
     passwords = reader(text)
 
     if request.method == 'POST':
