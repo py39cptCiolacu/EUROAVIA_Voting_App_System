@@ -329,8 +329,6 @@ def admin_passwords():
 "W9%VA",
 "N5@US",
 "X6@SQ",
-"K8\NZ",
-"H5\UX",
 "U8%PA",
 "D3%LS"]
 
