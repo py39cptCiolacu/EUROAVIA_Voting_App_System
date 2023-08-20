@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, request, session, flash, redirect,
 from . import db
 from .models import Status, Votes, Motion, Agenda, Admin, Password
 from flask_login import login_user, login_required, logout_user, current_user
-import pandas as pd
 
 views = Blueprint('views', __name__)
 
@@ -343,12 +342,12 @@ def admin_passwords():
     return render_template("admin_passwords.html")
 
 
-def reader(text):
+# def reader(text):
 
-    passwords = pd.read_excel(text)
-    passwords_text =[]
+#     passwords = pd.read_excel(text)
+#     passwords_text =[]
 
-    for p in passwords['Parole']:
-        passwords_text.append(p)
+#     for p in passwords['Parole']:
+#         passwords_text.append(p)
 
-    return passwords_text
+#     return passwords_text
