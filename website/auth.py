@@ -2,13 +2,16 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 from .models import Password
 
 
-auth = Blueprint('auth', __name__)
+auth_blueprint = Blueprint('auth', __name__)
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
 
-    passwords = Password.query.all()
+    # passwords = Password.query.all()
+    # passwords_text = []
+
+    passwords = []
     passwords_text = []
 
     for p in passwords:
