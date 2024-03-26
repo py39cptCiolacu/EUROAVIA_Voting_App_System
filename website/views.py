@@ -217,7 +217,7 @@ def admin_reset():
         reset = request.form.get('reset')
         if reset == 'RESET-DATABASE':
             Votes.query.delete()
-            Password.query.delete()
+            # Password.query.delete()
             motion = Motion(motion='no motion right now!')
             db.session.add(motion)
             db.session.commit()
