@@ -1,7 +1,9 @@
 {% extends "base.html" %} {% block title %}Congrats{% endblock %} {% block content%}
 
 <div class ='container'>
-    <center> <h2> Congratulations! </h2> </center>
+    <div class="round-box">
+        <center> <h2> Congratulations! </h2> </center>
+    </div>
 </div>
 
 <div class= 'button'>
@@ -12,6 +14,18 @@
     .container{
         padding-top: 60px;
     }
+    .round-box {
+    background-color: white;
+    padding: 40px;
+    margin-top: 50px; /* Adjust spacing between image and text */
+    border-radius: 10px; /* Rounded corners */
+    }
+
+    .round-box p {
+        margin: 0;
+        color: black; /* Adjust text color */
+    }
+
     .bn3639 {
       display: inline-flex;
       align-items: center;
