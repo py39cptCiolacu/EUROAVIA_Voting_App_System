@@ -17,9 +17,11 @@ def create_app():
 
 	from .auth import auth_blueprint
 	from .views import views_blueprint
+	from .admin import admin_blueprint
 
 	app.register_blueprint(views_blueprint, url_prefix='/')
 	app.register_blueprint(auth_blueprint, url_prefix='/')
+	app.register_blueprint(admin_blueprint, url_prefix='/admin-panel')
 
 	create_database(app)
 
