@@ -22,7 +22,8 @@ def home():
 @views_blueprint.route('/agenda', methods=['GET', 'POST'])
 def agenda():
 
-    "DEV: I should be able to upload a .docx file"
+    #NEW FEATURE: I should be able to upload a .docx file
+    #OPTIMIZATION: async* functions which upload the new agenda every time the admin push it
 
     agenda_text = Agenda.query.order_by(Agenda.id.desc()).first().agenda
     agenda_split = agenda_text.split(';')
@@ -39,9 +40,11 @@ def congrats():
 @views_blueprint.route('/error', methods=['GET', 'POST'])
 def error():
 
-	error_vot = session['error_voting']
+	#OPTIMIZATION: raise exception and redirect to here
+     
+    error_vot = session['error_voting']
 
-	return render_template("error.html", text = error_vot)
+    return render_template("error.html", text = error_vot)
 
 
 @views_blueprint.route('/extra_check', methods = ['GET', 'POST'])
