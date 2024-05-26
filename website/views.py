@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, session, redirect, url_for
-from .models import Status
-from models import Agenda, Votes
+from flask import Blueprint, render_template, session, redirect, url_for, request
+from .models import Agenda, Votes, Motion, Status
+from . import db
 
 
 views_blueprint = Blueprint('views', __name__)
@@ -17,6 +17,30 @@ def status():
 def home():
 
     return render_template("home.html")
+
+
+@views_blueprint.route('/voting', methods=['GET', 'POST'])
+def voting():
+
+    motion = Motion.query.order_by(Motion.id.desc()).first()
+
+    if request.method == 'POST':
+        vote_value = request.form.get('button')
+        password = session['parola']
+        check = Votes.query.filter_by(password=password).first()
+        if check:
+            session['error_voting'] = 'You already voted!'
+            return redirect(url_for('views.error'))
+        elif status() == 'STOP':
+            session['error_voting'] = 'Sorry. Is not voting time'
+            return redirect(url_for('views.error'))
+        else:
+            vote = Votes(vote=vote_value, password=password)
+            db.session.add(vote)
+            db.session.commit()
+            return redirect(url_for('views.extra_check')) 
+
+    return render_template("voting.html", motion=motion)
 
 
 @views_blueprint.route('/agenda', methods=['GET', 'POST'])

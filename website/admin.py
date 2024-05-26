@@ -1,7 +1,7 @@
 from flask import redirect, request, flash, url_for, render_template, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
 
-from models import (Status, 
+from .models import (Status, 
                     Votes, 
                     Motion, 
                     Password, 
